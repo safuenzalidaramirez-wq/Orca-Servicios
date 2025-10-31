@@ -35,7 +35,7 @@ Mensaje:
 ${mensaje}`;
     
     // IMPORTANTE: Cambia este número por el tuyo
-    const numeroWhatsApp = '56912345678'; // <-- TU NÚMERO AQUÍ
+    const numeroWhatsApp = '56984174739'; // <-- TU NÚMERO AQUÍ
     
     const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoWA)}`;
     
