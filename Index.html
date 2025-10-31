@@ -1,0 +1,554 @@
+import React, { useState } from 'react';
+import { Folder, File, ChevronRight, ChevronDown, Code, Layout, Image, Settings } from 'lucide-react';
+
+export default function WebStructureSchema() {
+  const [expandedFolders, setExpandedFolders] = useState({
+    styles: true,
+    js: true,
+    images: true
+  });
+
+  const [selectedFile, setSelectedFile] = useState('index.html');
+
+  const toggleFolder = (folder) => {
+    setExpandedFolders(prev => ({
+      ...prev,
+      [folder]: !prev[folder]
+    }));
+  };
+
+  const fileStructure = [
+    {
+      name: 'index.html',
+      type: 'file',
+      icon: Layout,
+      color: 'text-orange-500',
+      description: 'Página principal',
+      code: `<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantenciones Comerciales - Tu Empresa</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <!-- Menú de navegación -->
+    <nav class="navbar">
+        <div class="logo">TuEmpresa</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero/Banner principal -->
+    <section id="inicio" class="hero">
+        <h1>Mantención Profesional para tu Local</h1>
+        <p>Carpintería • Albañilería • Pintura</p>
+        <a href="#contacto" class="btn-primary">Solicitar Cotización</a>
+    </section>
+
+    <!-- Sección de servicios -->
+    <section id="servicios" class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="images/carpinteria.jpg" alt="Carpintería">
+                <h3>Carpintería</h3>
+                <p>Muebles, estanterías, reparaciones</p>
+            </div>
+            <div class="service-card">
+                <img src="images/albanileria.jpg" alt="Albañilería">
+                <h3>Albañilería</h3>
+                <p>Muros, reparaciones, instalaciones</p>
+            </div>
+            <div class="service-card">
+                <img src="images/pintura.jpg" alt="Pintura">
+                <h3>Pintura</h3>
+                <p>Fachadas, interiores, restauración</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section id="contacto" class="contact">
+        <h2>Solicita tu Cotización</h2>
+        <div class="contact-form">
+            <input type="text" placeholder="Nombre" id="nombre">
+            <input type="email" placeholder="Email" id="email">
+            <input type="tel" placeholder="Teléfono" id="telefono">
+            <select id="servicio">
+                <option>Selecciona un servicio</option>
+                <option>Carpintería</option>
+                <option>Albañilería</option>
+                <option>Pintura</option>
+                <option>Mantención General</option>
+            </select>
+            <textarea placeholder="Describe tu proyecto" id="mensaje"></textarea>
+            <button id="enviarBtn">Enviar Cotización</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Tu Empresa - Mantenciones Comerciales</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>`
+    },
+    {
+      name: 'styles/',
+      type: 'folder',
+      id: 'styles',
+      children: [
+        {
+          name: 'main.css',
+          type: 'file',
+          icon: Code,
+          color: 'text-blue-500',
+          description: 'Estilos principales',
+          code: `/* Variables */
+:root {
+    --primary: #2563eb;
+    --secondary: #f59e0b;
+    --dark: #1f2937;
+    --light: #f9fafb;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* Navegación */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 6rem 5%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: var(--secondary);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 2rem;
+    font-weight: bold;
+}
+
+/* Servicios */
+.services {
+    padding: 4rem 5%;
+    background: var(--light);
+}
+
+.services h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.service-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* Contacto */
+.contact {
+    padding: 4rem 5%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact input,
+.contact select,
+.contact textarea {
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.contact textarea {
+    min-height: 120px;
+}
+
+.contact button {
+    padding: 1rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact button:hover {
+    background: #1d4ed8;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+    .nav-links {
+        gap: 1rem;
+    }
+}`
+        }
+      ]
+    },
+    {
+      name: 'js/',
+      type: 'folder',
+      id: 'js',
+      children: [
+        {
+          name: 'main.js',
+          type: 'file',
+          icon: Code,
+          color: 'text-yellow-500',
+          description: 'JavaScript interactivo',
+          code: `// Navegación suave
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Envío de cotización por WhatsApp
+const enviarBtn = document.getElementById('enviarBtn');
+
+enviarBtn.addEventListener('click', () => {
+    const nombre = document.getElementById('nombre').value;
+    const email = document.getElementById('email').value;
+    const telefono = document.getElementById('telefono').value;
+    const servicio = document.getElementById('servicio').value;
+    const mensaje = document.getElementById('mensaje').value;
+    
+    // Validación
+    if (!nombre || !email || !telefono) {
+        alert('Por favor completa todos los campos obligatorios');
+        return;
+    }
+    
+    // Crear mensaje para WhatsApp
+    const textoWA = \`🔧 Nueva Cotización
+
+Nombre: \${nombre}
+Email: \${email}
+Teléfono: \${telefono}
+Servicio: \${servicio}
+
+Mensaje:
+\${mensaje}\`;
+    
+    // IMPORTANTE: Cambia este número por el tuyo
+    const numeroWhatsApp = '56912345678'; // <-- TU NÚMERO AQUÍ
+    
+    const urlWhatsApp = \`https://wa.me/\${numeroWhatsApp}?text=\${encodeURIComponent(textoWA)}\`;
+    
+    // Abrir WhatsApp
+    window.open(urlWhatsApp, '_blank');
+    
+    // Mensaje de confirmación
+    alert('¡Gracias! Serás redirigido a WhatsApp');
+    
+    // Limpiar formulario
+    document.getElementById('nombre').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('telefono').value = '';
+    document.getElementById('servicio').selectedIndex = 0;
+    document.getElementById('mensaje').value = '';
+});
+
+// Animaciones al hacer scroll
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, {
+    threshold: 0.1
+});
+
+document.querySelectorAll('.service-card').forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s ease';
+    observer.observe(card);
+});`
+        }
+      ]
+    },
+    {
+      name: 'images/',
+      type: 'folder',
+      id: 'images',
+      children: [
+        {
+          name: 'carpinteria.jpg',
+          type: 'file',
+          icon: Image,
+          color: 'text-green-500',
+          description: 'Foto de trabajos de carpintería'
+        },
+        {
+          name: 'albanileria.jpg',
+          type: 'file',
+          icon: Image,
+          color: 'text-green-500',
+          description: 'Foto de trabajos de albañilería'
+        },
+        {
+          name: 'pintura.jpg',
+          type: 'file',
+          icon: Image,
+          color: 'text-green-500',
+          description: 'Foto de trabajos de pintura'
+        }
+      ]
+    }
+  ];
+
+  const renderFileTree = (items, level = 0) => {
+    return items.map((item, index) => {
+      if (item.type === 'folder') {
+        const isExpanded = expandedFolders[item.id];
+        return (
+          <div key={index} style={{ marginLeft: `${level * 20}px` }}>
+            <div
+              className="flex items-center gap-2 py-2 px-3 hover:bg-slate-100 rounded cursor-pointer"
+              onClick={() => toggleFolder(item.id)}
+            >
+              {isExpanded ? (
+                <ChevronDown className="w-4 h-4 text-slate-400" />
+              ) : (
+                <ChevronRight className="w-4 h-4 text-slate-400" />
+              )}
+              <Folder className="w-5 h-5 text-yellow-500" />
+              <span className="font-medium text-slate-700">{item.name}</span>
+            </div>
+            {isExpanded && item.children && (
+              <div>{renderFileTree(item.children, level + 1)}</div>
+            )}
+          </div>
+        );
+      } else {
+        const Icon = item.icon || File;
+        return (
+          <div
+            key={index}
+            style={{ marginLeft: `${level * 20}px` }}
+            className={`flex items-center gap-2 py-2 px-3 hover:bg-blue-50 rounded cursor-pointer ${
+              selectedFile === item.name ? 'bg-blue-100' : ''
+            }`}
+            onClick={() => setSelectedFile(item.name)}
+          >
+            <div className="w-4" />
+            <Icon className={`w-5 h-5 ${item.color}`} />
+            <div className="flex-1">
+              <span className="font-medium text-slate-700 block">{item.name}</span>
+              {item.description && (
+                <p className="text-xs text-slate-500">{item.description}</p>
+              )}
+            </div>
+          </div>
+        );
+      }
+    });
+  };
+
+  const getSelectedFileContent = () => {
+    const findFile = (items) => {
+      for (const item of items) {
+        if (item.name === selectedFile && item.code) {
+          return item;
+        }
+        if (item.children) {
+          const found = findFile(item.children);
+          if (found) return found;
+        }
+      }
+      return null;
+    };
+    return findFile(fileStructure);
+  };
+
+  const selectedFileContent = getSelectedFileContent();
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="bg-white rounded-xl shadow-lg p-6 mb-6">
+          <h1 className="text-3xl font-bold text-slate-800 mb-2">
+            📁 Estructura Web - Mantenciones
+          </h1>
+          <p className="text-slate-600">
+            Haz clic en los archivos para ver el código completo
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* File Tree */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-xl shadow-lg p-4 sticky top-4">
+              <div className="flex items-center gap-2 mb-4 pb-3 border-b">
+                <Settings className="w-5 h-5 text-blue-500" />
+                <h2 className="font-semibold text-slate-800">Archivos</h2>
+              </div>
+              <div className="space-y-1">
+                {renderFileTree(fileStructure)}
+              </div>
+            </div>
+          </div>
+
+          {/* Code Preview */}
+          <div className="lg:col-span-2">
+            <div className="bg-slate-900 rounded-xl shadow-lg overflow-hidden">
+              {selectedFileContent ? (
+                <>
+                  <div className="bg-slate-800 px-6 py-4 flex items-center gap-3 border-b border-slate-700">
+                    <Code className="w-5 h-5 text-blue-400" />
+                    <span className="text-slate-200 font-medium">{selectedFile}</span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <pre className="p-6 text-sm leading-relaxed">
+                      <code className="text-green-300 whitespace-pre">{selectedFileContent.code}</code>
+                    </pre>
+                  </div>
+                </>
+              ) : (
+                <div className="p-16 text-center">
+                  <Code className="w-20 h-20 text-slate-600 mx-auto mb-4" />
+                  <p className="text-slate-400 text-lg">
+                    Selecciona un archivo para ver su código
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Tips */}
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-lg p-5">
+            <h3 className="font-bold text-blue-900 mb-3">🚀 Pasos Rápidos</h3>
+            <ol className="text-sm text-blue-800 space-y-2">
+              <li><strong>1.</strong> Crea las 3 carpetas</li>
+              <li><strong>2.</strong> Copia cada código</li>
+              <li><strong>3.</strong> Cambia tu número en main.js</li>
+              <li><strong>4.</strong> Agrega fotos en /images</li>
+              <li><strong>5.</strong> Sube a hosting gratis</li>
+            </ol>
+          </div>
+
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 rounded-lg p-5">
+            <h3 className="font-bold text-yellow-900 mb-3">💡 Hosting Gratis</h3>
+            <ul className="text-sm text-yellow-800 space-y-2">
+              <li>• <strong>Netlify:</strong> Súper fácil</li>
+              <li>• <strong>Vercel:</strong> Muy rápido</li>
+              <li>• <strong>GitHub Pages:</strong> Clásico</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
