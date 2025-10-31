@@ -1,7 +1,7 @@
 /* Variables */
 :root {
     --primary: #10344C;
-    --secondary: #f59e0b;
+    --secondary: #f5dd0b;
     --dark: #1f2937;
     --light: #f9fafb;
 }
@@ -154,7 +154,7 @@ body {
 }
 
 .contact button:hover {
-    background: #1d4ed8;
+    background: #10344C;
 }
 
 footer {
