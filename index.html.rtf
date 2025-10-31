@@ -1,0 +1,581 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2818
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;\f1\fnil\fcharset0 .AppleSystemUIFontMonospaced-RegularItalic;}
+{\colortbl;\red255\green255\blue255;\red147\green0\blue147;\red255\green255\blue255;\red42\green44\blue51;
+\red66\green147\blue62;\red50\green94\blue238;\red167\green87\blue5;\red219\green63\blue57;\red143\green144\blue150;
+}
+{\*\expandedcolortbl;;\cssrgb\c65098\c14902\c64314;\cssrgb\c100000\c100000\c100000;\cssrgb\c21961\c22745\c25882;
+\cssrgb\c31373\c63137\c30980;\cssrgb\c25098\c47059\c94902;\cssrgb\c71765\c41961\c392;\cssrgb\c89412\c33725\c28627;\cssrgb\c62745\c63137\c65490;
+}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 import\cf4 \strokec4  React, \{ useState \} \cf2 \strokec2 from\cf4 \strokec4  \cf5 \strokec5 'react'\cf4 \strokec4 ;\
+\cf2 \strokec2 import\cf4 \strokec4  \{ Folder, File, ChevronRight, ChevronDown, Code, Layout, Image, Settings \} \cf2 \strokec2 from\cf4 \strokec4  \cf5 \strokec5 'lucide-react'\cf4 \strokec4 ;\
+\
+\cf2 \strokec2 export\cf4 \strokec4  \cf2 \strokec2 default\cf4 \strokec4  \cf2 \strokec2 function\cf4 \strokec4  \cf6 \strokec6 WebStructureSchema\cf4 \strokec4 () \{\
+  \cf2 \strokec2 const\cf4 \strokec4  [expandedFolders, setExpandedFolders] \cf6 \strokec6 =\cf4 \strokec4  \cf6 \strokec6 useState\cf4 \strokec4 (\{\
+    styles\cf6 \strokec6 :\cf4 \strokec4  \cf7 \strokec7 true\cf4 \strokec4 ,\
+    js\cf6 \strokec6 :\cf4 \strokec4  \cf7 \strokec7 true\cf4 \strokec4 ,\
+    images\cf6 \strokec6 :\cf4 \strokec4  \cf7 \strokec7 true\cf4 \strokec4 \
+  \});\
+\
+  \cf2 \strokec2 const\cf4 \strokec4  [selectedFile, setSelectedFile] \cf6 \strokec6 =\cf4 \strokec4  \cf6 \strokec6 useState\cf4 \strokec4 (\cf5 \strokec5 'index.html'\cf4 \strokec4 );\
+\
+  \cf2 \strokec2 const\cf4 \strokec4  \cf6 \strokec6 toggleFolder\cf4 \strokec4  \cf6 \strokec6 =\cf4 \strokec4  (folder) \cf6 \strokec6 =>\cf4 \strokec4  \{\
+    \cf6 \strokec6 setExpandedFolders\cf4 \strokec4 (prev \cf6 \strokec6 =>\cf4 \strokec4  (\{\
+      \cf6 \strokec6 ...\cf4 \strokec4 prev,\
+      [folder]\cf6 \strokec6 :\cf4 \strokec4  \cf6 \strokec6 !\cf4 \strokec4 prev[folder]\
+    \}));\
+  \};\
+\
+  \cf2 \strokec2 const\cf4 \strokec4  fileStructure \cf6 \strokec6 =\cf4 \strokec4  [\
+    \{\
+      name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'index.html'\cf4 \strokec4 ,\
+      type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'file'\cf4 \strokec4 ,\
+      icon\cf6 \strokec6 :\cf4 \strokec4  Layout,\
+      color\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'text-orange-500'\cf4 \strokec4 ,\
+      description\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'P\'e1gina principal'\cf4 \strokec4 ,\
+      code\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 `<!DOCTYPE html>\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 <html lang="es">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Mantenciones Comerciales - Tu Empresa</title>\
+    <link rel="stylesheet" href="styles/main.css">\
+</head>\
+<body>\
+    <!-- Men\'fa de navegaci\'f3n -->\
+    <nav class="navbar">\
+        <div class="logo">TuEmpresa</div>\
+        <ul class="nav-links">\
+            <li><a href="#inicio">Inicio</a></li>\
+            <li><a href="#servicios">Servicios</a></li>\
+            <li><a href="#proyectos">Proyectos</a></li>\
+            <li><a href="#contacto">Contacto</a></li>\
+        </ul>\
+    </nav>\
+\
+    <!-- Hero/Banner principal -->\
+    <section id="inicio" class="hero">\
+        <h1>Mantenci\'f3n Profesional para tu Local</h1>\
+        <p>Carpinter\'eda \'95 Alba\'f1iler\'eda \'95 Pintura</p>\
+        <a href="#contacto" class="btn-primary">Solicitar Cotizaci\'f3n</a>\
+    </section>\
+\
+    <!-- Secci\'f3n de servicios -->\
+    <section id="servicios" class="services">\
+        <h2>Nuestros Servicios</h2>\
+        <div class="service-grid">\
+            <div class="service-card">\
+                <img src="images/carpinteria.jpg" alt="Carpinter\'eda">\
+                <h3>Carpinter\'eda</h3>\
+                <p>Muebles, estanter\'edas, reparaciones</p>\
+            </div>\
+            <div class="service-card">\
+                <img src="images/albanileria.jpg" alt="Alba\'f1iler\'eda">\
+                <h3>Alba\'f1iler\'eda</h3>\
+                <p>Muros, reparaciones, instalaciones</p>\
+            </div>\
+            <div class="service-card">\
+                <img src="images/pintura.jpg" alt="Pintura">\
+                <h3>Pintura</h3>\
+                <p>Fachadas, interiores, restauraci\'f3n</p>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <!-- Formulario de contacto -->\
+    <section id="contacto" class="contact">\
+        <h2>Solicita tu Cotizaci\'f3n</h2>\
+        <div class="contact-form">\
+            <input type="text" placeholder="Nombre" id="nombre">\
+            <input type="email" placeholder="Email" id="email">\
+            <input type="tel" placeholder="Tel\'e9fono" id="telefono">\
+            <select id="servicio">\
+                <option>Selecciona un servicio</option>\
+                <option>Carpinter\'eda</option>\
+                <option>Alba\'f1iler\'eda</option>\
+                <option>Pintura</option>\
+                <option>Mantenci\'f3n General</option>\
+            </select>\
+            <textarea placeholder="Describe tu proyecto" id="mensaje"></textarea>\
+            <button id="enviarBtn">Enviar Cotizaci\'f3n</button>\
+        </div>\
+    </section>\
+\
+    <footer>\
+        <p>&copy; 2024 Tu Empresa - Mantenciones Comerciales</p>\
+    </footer>\
+\
+    <script src="js/main.js"></script>\
+</body>\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 </html>`\cf4 \strokec4 \
+    \},\
+    \{\
+      name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'styles/'\cf4 \strokec4 ,\
+      type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'folder'\cf4 \strokec4 ,\
+      id\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'styles'\cf4 \strokec4 ,\
+      children\cf6 \strokec6 :\cf4 \strokec4  [\
+        \{\
+          name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'main.css'\cf4 \strokec4 ,\
+          type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'file'\cf4 \strokec4 ,\
+          icon\cf6 \strokec6 :\cf4 \strokec4  Code,\
+          color\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'text-blue-500'\cf4 \strokec4 ,\
+          description\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'Estilos principales'\cf4 \strokec4 ,\
+          code\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 `/* Variables */\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 :root \{\
+    --primary: #2563eb;\
+    --secondary: #f59e0b;\
+    --dark: #1f2937;\
+    --light: #f9fafb;\
+\}\
+\
+* \{\
+    margin: 0;\
+    padding: 0;\
+    box-sizing: border-box;\
+\}\
+\
+body \{\
+    font-family: Arial, sans-serif;\
+    color: var(--dark);\
+    line-height: 1.6;\
+\}\
+\
+/* Navegaci\'f3n */\
+.navbar \{\
+    display: flex;\
+    justify-content: space-between;\
+    align-items: center;\
+    padding: 1rem 5%;\
+    background: white;\
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);\
+    position: sticky;\
+    top: 0;\
+    z-index: 100;\
+\}\
+\
+.logo \{\
+    font-size: 1.5rem;\
+    font-weight: bold;\
+    color: var(--primary);\
+\}\
+\
+.nav-links \{\
+    display: flex;\
+    list-style: none;\
+    gap: 2rem;\
+\}\
+\
+.nav-links a \{\
+    text-decoration: none;\
+    color: var(--dark);\
+    font-weight: 500;\
+\}\
+\
+.nav-links a:hover \{\
+    color: var(--primary);\
+\}\
+\
+/* Hero */\
+.hero \{\
+    text-align: center;\
+    padding: 6rem 5%;\
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\
+    color: white;\
+\}\
+\
+.hero h1 \{\
+    font-size: 3rem;\
+    margin-bottom: 1rem;\
+\}\
+\
+.btn-primary \{\
+    display: inline-block;\
+    padding: 1rem 2rem;\
+    background: var(--secondary);\
+    color: white;\
+    text-decoration: none;\
+    border-radius: 8px;\
+    margin-top: 2rem;\
+    font-weight: bold;\
+\}\
+\
+/* Servicios */\
+.services \{\
+    padding: 4rem 5%;\
+    background: var(--light);\
+\}\
+\
+.services h2 \{\
+    text-align: center;\
+    font-size: 2.5rem;\
+    margin-bottom: 3rem;\
+\}\
+\
+.service-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\
+    gap: 2rem;\
+\}\
+\
+.service-card \{\
+    background: white;\
+    padding: 2rem;\
+    border-radius: 10px;\
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);\
+    text-align: center;\
+\}\
+\
+.service-card img \{\
+    width: 100%;\
+    height: 200px;\
+    object-fit: cover;\
+    border-radius: 8px;\
+    margin-bottom: 1rem;\
+\}\
+\
+/* Contacto */\
+.contact \{\
+    padding: 4rem 5%;\
+    max-width: 600px;\
+    margin: 0 auto;\
+\}\
+\
+.contact h2 \{\
+    text-align: center;\
+    margin-bottom: 2rem;\
+\}\
+\
+.contact-form \{\
+    display: flex;\
+    flex-direction: column;\
+    gap: 1rem;\
+\}\
+\
+.contact input,\
+.contact select,\
+.contact textarea \{\
+    padding: 1rem;\
+    border: 2px solid #e5e7eb;\
+    border-radius: 8px;\
+    font-size: 1rem;\
+\}\
+\
+.contact textarea \{\
+    min-height: 120px;\
+\}\
+\
+.contact button \{\
+    padding: 1rem;\
+    background: var(--primary);\
+    color: white;\
+    border: none;\
+    border-radius: 8px;\
+    font-size: 1rem;\
+    font-weight: bold;\
+    cursor: pointer;\
+\}\
+\
+.contact button:hover \{\
+    background: #1d4ed8;\
+\}\
+\
+footer \{\
+    background: var(--dark);\
+    color: white;\
+    text-align: center;\
+    padding: 2rem;\
+\}\
+\
+/* Responsive */\
+@media (max-width: 768px) \{\
+    .hero h1 \{\
+        font-size: 2rem;\
+    \}\
+    .nav-links \{\
+        gap: 1rem;\
+    \}\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 \}`\cf4 \strokec4 \
+        \}\
+      ]\
+    \},\
+    \{\
+      name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'js/'\cf4 \strokec4 ,\
+      type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'folder'\cf4 \strokec4 ,\
+      id\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'js'\cf4 \strokec4 ,\
+      children\cf6 \strokec6 :\cf4 \strokec4  [\
+        \{\
+          name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'main.js'\cf4 \strokec4 ,\
+          type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'file'\cf4 \strokec4 ,\
+          icon\cf6 \strokec6 :\cf4 \strokec4  Code,\
+          color\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'text-yellow-500'\cf4 \strokec4 ,\
+          description\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'JavaScript interactivo'\cf4 \strokec4 ,\
+          code\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 `// Navegaci\'f3n suave\
+\pard\pardeftab720\partightenfactor0
+\cf4 \strokec4 document.querySelectorAll('a[href^="#"]').forEach(anchor => \{\
+    anchor.addEventListener('click', function (e) \{\
+        e.preventDefault();\
+        const target = document.querySelector(this.getAttribute('href'));\
+        target.scrollIntoView(\{ behavior: 'smooth' \});\
+    \});\
+\});\
+\
+// Env\'edo de cotizaci\'f3n por WhatsApp\
+const enviarBtn = document.getElementById('enviarBtn');\
+\
+enviarBtn.addEventListener('click', () => \{\
+    const nombre = document.getElementById('nombre').value;\
+    const email = document.getElementById('email').value;\
+    const telefono = document.getElementById('telefono').value;\
+    const servicio = document.getElementById('servicio').value;\
+    const mensaje = document.getElementById('mensaje').value;\
+    \
+    // Validaci\'f3n\
+    if (!nombre || !email || !telefono) \{\
+        alert('Por favor completa todos los campos obligatorios');\
+        return;\
+    \}\
+    \
+    // Crear mensaje para WhatsApp\
+    const textoWA = \\`\uc0\u55357 \u56615  Nueva Cotizaci\'f3n\
+\
+Nombre: \\$\{nombre\}\
+Email: \\$\{email\}\
+Tel\'e9fono: \\$\{telefono\}\
+Servicio: \\$\{servicio\}\
+\
+Mensaje:\
+\\$\{mensaje\}\\`;\
+    \
+    // IMPORTANTE: Cambia este n\'famero por el tuyo\
+    const numeroWhatsApp = '56912345678'; // <-- TU N\'daMERO AQU\'cd\
+    \
+    const urlWhatsApp = \\`https://wa.me/\\$\{numeroWhatsApp\}?text=\\$\{encodeURIComponent(textoWA)\}\\`;\
+    \
+    // Abrir WhatsApp\
+    window.open(urlWhatsApp, '_blank');\
+    \
+    // Mensaje de confirmaci\'f3n\
+    alert('\'a1Gracias! Ser\'e1s redirigido a WhatsApp');\
+    \
+    // Limpiar formulario\
+    document.getElementById('nombre').value = '';\
+    document.getElementById('email').value = '';\
+    document.getElementById('telefono').value = '';\
+    document.getElementById('servicio').selectedIndex = 0;\
+    document.getElementById('mensaje').value = '';\
+\});\
+\
+// Animaciones al hacer scroll\
+const observer = new IntersectionObserver((entries) => \{\
+    entries.forEach(entry => \{\
+        if (entry.isIntersecting) \{\
+            entry.target.style.opacity = '1';\
+            entry.target.style.transform = 'translateY(0)';\
+        \}\
+    \});\
+\}, \{\
+    threshold: 0.1\
+\});\
+\
+document.querySelectorAll('.service-card').forEach(card => \{\
+    card.style.opacity = '0';\
+    card.style.transform = 'translateY(30px)';\
+    card.style.transition = 'all 0.6s ease';\
+    observer.observe(card);\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 \});`\cf4 \strokec4 \
+        \}\
+      ]\
+    \},\
+    \{\
+      name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'images/'\cf4 \strokec4 ,\
+      type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'folder'\cf4 \strokec4 ,\
+      id\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'images'\cf4 \strokec4 ,\
+      children\cf6 \strokec6 :\cf4 \strokec4  [\
+        \{\
+          name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'carpinteria.jpg'\cf4 \strokec4 ,\
+          type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'file'\cf4 \strokec4 ,\
+          icon\cf6 \strokec6 :\cf4 \strokec4  Image,\
+          color\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'text-green-500'\cf4 \strokec4 ,\
+          description\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'Foto de trabajos de carpinter\'eda'\cf4 \strokec4 \
+        \},\
+        \{\
+          name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'albanileria.jpg'\cf4 \strokec4 ,\
+          type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'file'\cf4 \strokec4 ,\
+          icon\cf6 \strokec6 :\cf4 \strokec4  Image,\
+          color\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'text-green-500'\cf4 \strokec4 ,\
+          description\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'Foto de trabajos de alba\'f1iler\'eda'\cf4 \strokec4 \
+        \},\
+        \{\
+          name\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'pintura.jpg'\cf4 \strokec4 ,\
+          type\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'file'\cf4 \strokec4 ,\
+          icon\cf6 \strokec6 :\cf4 \strokec4  Image,\
+          color\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'text-green-500'\cf4 \strokec4 ,\
+          description\cf6 \strokec6 :\cf4 \strokec4  \cf5 \strokec5 'Foto de trabajos de pintura'\cf4 \strokec4 \
+        \}\
+      ]\
+    \}\
+  ];\
+\
+  \cf2 \strokec2 const\cf4 \strokec4  \cf6 \strokec6 renderFileTree\cf4 \strokec4  \cf6 \strokec6 =\cf4 \strokec4  (items, level \cf6 \strokec6 =\cf4 \strokec4  \cf7 \strokec7 0\cf4 \strokec4 ) \cf6 \strokec6 =>\cf4 \strokec4  \{\
+    \cf2 \strokec2 return\cf4 \strokec4  items.\cf6 \strokec6 map\cf4 \strokec4 ((item, index) \cf6 \strokec6 =>\cf4 \strokec4  \{\
+      \cf2 \strokec2 if\cf4 \strokec4  (item.type \cf6 \strokec6 ===\cf4 \strokec4  \cf5 \strokec5 'folder'\cf4 \strokec4 ) \{\
+        \cf2 \strokec2 const\cf4 \strokec4  isExpanded \cf6 \strokec6 =\cf4 \strokec4  expandedFolders[item.id];\
+        \cf2 \strokec2 return\cf4 \strokec4  (\
+          <\cf8 \strokec8 div \cf7 \strokec7 key\cf8 \strokec8 =\cf4 \strokec4 \{\cf8 \strokec8 index\cf4 \strokec4 \}\cf8 \strokec8  \cf7 \strokec7 style\cf8 \strokec8 =\cf4 \strokec4 \{\{\cf8 \strokec8  marginLeft\cf6 \strokec6 :\cf8 \strokec8  `$\{level * 20\}px` \cf4 \strokec4 \}\}>\
+            <\cf8 \strokec8 div\
+              \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 flex items-center gap-2 py-2 px-3 hover:bg-slate-100 rounded cursor-pointer\cf4 \strokec4 "\cf8 \strokec8 \
+              \cf7 \strokec7 onClick\cf8 \strokec8 =\cf4 \strokec4 \{()\cf8 \strokec8  => \cf6 \strokec6 toggleFolder\cf4 \strokec4 (\cf8 \strokec8 item\cf4 \strokec4 .\cf8 \strokec8 id\cf4 \strokec4 )\}\cf8 \strokec8 \
+            \cf4 \strokec4 >\
+              \{isExpanded \cf6 \strokec6 ?\cf4 \strokec4  (\
+                <\cf7 \strokec7 ChevronDown\cf8 \strokec8  \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 w-4 h-4 text-slate-400\cf4 \strokec4 "\cf8 \strokec8  \cf4 \strokec4 />\
+              ) \cf6 \strokec6 :\cf4 \strokec4  (\
+                <\cf7 \strokec7 ChevronRight\cf8 \strokec8  \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 w-4 h-4 text-slate-400\cf4 \strokec4 "\cf8 \strokec8  \cf4 \strokec4 />\
+              )\}\
+              <\cf7 \strokec7 Folder\cf8 \strokec8  \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 w-5 h-5 text-yellow-500\cf4 \strokec4 "\cf8 \strokec8  \cf4 \strokec4 />\
+              <\cf8 \strokec8 span \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 font-medium text-slate-700\cf4 \strokec4 ">\{item.name\}</\cf8 \strokec8 span\cf4 \strokec4 >\
+            </\cf8 \strokec8 div\cf4 \strokec4 >\
+            \{isExpanded \cf6 \strokec6 &&\cf4 \strokec4  item.children \cf6 \strokec6 &&\cf4 \strokec4  (\
+              <\cf8 \strokec8 div\cf4 \strokec4 >\{\cf6 \strokec6 renderFileTree\cf4 \strokec4 (item.children, level \cf6 \strokec6 +\cf4 \strokec4  \cf7 \strokec7 1\cf4 \strokec4 )\}</\cf8 \strokec8 div\cf4 \strokec4 >\
+            )\}\
+          </\cf8 \strokec8 div\cf4 \strokec4 >\
+        );\
+      \} \cf2 \strokec2 else\cf4 \strokec4  \{\
+        \cf2 \strokec2 const\cf4 \strokec4  Icon \cf6 \strokec6 =\cf4 \strokec4  item.icon \cf6 \strokec6 ||\cf4 \strokec4  File;\
+        \cf2 \strokec2 return\cf4 \strokec4  (\
+          <\cf8 \strokec8 div\
+            \cf7 \strokec7 key\cf8 \strokec8 =\cf4 \strokec4 \{\cf8 \strokec8 index\cf4 \strokec4 \}\cf8 \strokec8 \
+            \cf7 \strokec7 style\cf8 \strokec8 =\cf4 \strokec4 \{\{\cf8 \strokec8  marginLeft\cf6 \strokec6 :\cf8 \strokec8  `$\{level * 20\}px` \cf4 \strokec4 \}\}\cf8 \strokec8 \
+            \cf7 \strokec7 className\cf8 \strokec8 =\cf4 \strokec4 \{\cf8 \strokec8 `flex items-center gap-2 py-2 px-3 hover:bg-blue-50 rounded cursor-pointer $\{\
+              selectedFile === item.name ? 'bg-blue-100' : ''\
+            \}`\cf4 \strokec4 \}\cf8 \strokec8 \
+            \cf7 \strokec7 onClick\cf8 \strokec8 =\cf4 \strokec4 \{()\cf8 \strokec8  => \cf6 \strokec6 setSelectedFile\cf4 \strokec4 (\cf8 \strokec8 item\cf4 \strokec4 .\cf8 \strokec8 name\cf4 \strokec4 )\}\cf8 \strokec8 \
+          \cf4 \strokec4 >\
+            <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 w-4\cf4 \strokec4 "\cf8 \strokec8  \cf4 \strokec4 />\
+            <\cf7 \strokec7 Icon\cf8 \strokec8  \cf7 \strokec7 className\cf8 \strokec8 =\cf4 \strokec4 \{\cf8 \strokec8 `w-5 h-5 $\{item.color\}`\cf4 \strokec4 \}\cf8 \strokec8  \cf4 \strokec4 />\
+            <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 flex-1\cf4 \strokec4 ">\
+              <\cf8 \strokec8 span \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 font-medium text-slate-700 block\cf4 \strokec4 ">\{item.name\}</\cf8 \strokec8 span\cf4 \strokec4 >\
+              \{item.description \cf6 \strokec6 &&\cf4 \strokec4  (\
+                <\cf8 \strokec8 p \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 text-xs text-slate-500\cf4 \strokec4 ">\{item.description\}</\cf8 \strokec8 p\cf4 \strokec4 >\
+              )\}\
+            </\cf8 \strokec8 div\cf4 \strokec4 >\
+          </\cf8 \strokec8 div\cf4 \strokec4 >\
+        );\
+      \}\
+    \});\
+  \};\
+\
+  \cf2 \strokec2 const\cf4 \strokec4  \cf6 \strokec6 getSelectedFileContent\cf4 \strokec4  \cf6 \strokec6 =\cf4 \strokec4  () \cf6 \strokec6 =>\cf4 \strokec4  \{\
+    \cf2 \strokec2 const\cf4 \strokec4  \cf6 \strokec6 findFile\cf4 \strokec4  \cf6 \strokec6 =\cf4 \strokec4  (items) \cf6 \strokec6 =>\cf4 \strokec4  \{\
+      \cf2 \strokec2 for\cf4 \strokec4  (\cf2 \strokec2 const\cf4 \strokec4  item \cf2 \strokec2 of\cf4 \strokec4  items) \{\
+        \cf2 \strokec2 if\cf4 \strokec4  (item.name \cf6 \strokec6 ===\cf4 \strokec4  selectedFile \cf6 \strokec6 &&\cf4 \strokec4  item.code) \{\
+          \cf2 \strokec2 return\cf4 \strokec4  item;\
+        \}\
+        \cf2 \strokec2 if\cf4 \strokec4  (item.children) \{\
+          \cf2 \strokec2 const\cf4 \strokec4  found \cf6 \strokec6 =\cf4 \strokec4  \cf6 \strokec6 findFile\cf4 \strokec4 (item.children);\
+          \cf2 \strokec2 if\cf4 \strokec4  (found) \cf2 \strokec2 return\cf4 \strokec4  found;\
+        \}\
+      \}\
+      \cf2 \strokec2 return\cf4 \strokec4  \cf2 \strokec2 null\cf4 \strokec4 ;\
+    \};\
+    \cf2 \strokec2 return\cf4 \strokec4  \cf6 \strokec6 findFile\cf4 \strokec4 (fileStructure);\
+  \};\
+\
+  \cf2 \strokec2 const\cf4 \strokec4  selectedFileContent \cf6 \strokec6 =\cf4 \strokec4  \cf6 \strokec6 getSelectedFileContent\cf4 \strokec4 ();\
+\
+  \cf2 \strokec2 return\cf4 \strokec4  (\
+    <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-4\cf4 \strokec4 ">\
+      <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 max-w-7xl mx-auto\cf4 \strokec4 ">\
+        \{
+\f1\i \cf9 \strokec9 /* Header */
+\f0\i0 \cf4 \strokec4 \}\
+        <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 bg-white rounded-xl shadow-lg p-6 mb-6\cf4 \strokec4 ">\
+          <\cf8 \strokec8 h1 \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 text-3xl font-bold text-slate-800 mb-2\cf4 \strokec4 ">\
+            \uc0\u55357 \u56513  Estructura Web - Mantenciones\
+          </\cf8 \strokec8 h1\cf4 \strokec4 >\
+          <\cf8 \strokec8 p \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 text-slate-600\cf4 \strokec4 ">\
+            Haz clic en los archivos para ver el c\'f3digo completo\
+          </\cf8 \strokec8 p\cf4 \strokec4 >\
+        </\cf8 \strokec8 div\cf4 \strokec4 >\
+\
+        <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 grid grid-cols-1 lg:grid-cols-3 gap-6\cf4 \strokec4 ">\
+          \{
+\f1\i \cf9 \strokec9 /* File Tree */
+\f0\i0 \cf4 \strokec4 \}\
+          <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 lg:col-span-1\cf4 \strokec4 ">\
+            <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 bg-white rounded-xl shadow-lg p-4 sticky top-4\cf4 \strokec4 ">\
+              <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 flex items-center gap-2 mb-4 pb-3 border-b\cf4 \strokec4 ">\
+                <\cf7 \strokec7 Settings\cf8 \strokec8  \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 w-5 h-5 text-blue-500\cf4 \strokec4 "\cf8 \strokec8  \cf4 \strokec4 />\
+                <\cf8 \strokec8 h2 \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 font-semibold text-slate-800\cf4 \strokec4 ">Archivos</\cf8 \strokec8 h2\cf4 \strokec4 >\
+              </\cf8 \strokec8 div\cf4 \strokec4 >\
+              <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 space-y-1\cf4 \strokec4 ">\
+                \{\cf6 \strokec6 renderFileTree\cf4 \strokec4 (fileStructure)\}\
+              </\cf8 \strokec8 div\cf4 \strokec4 >\
+            </\cf8 \strokec8 div\cf4 \strokec4 >\
+          </\cf8 \strokec8 div\cf4 \strokec4 >\
+\
+          \{
+\f1\i \cf9 \strokec9 /* Code Preview */
+\f0\i0 \cf4 \strokec4 \}\
+          <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 lg:col-span-2\cf4 \strokec4 ">\
+            <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 bg-slate-900 rounded-xl shadow-lg overflow-hidden\cf4 \strokec4 ">\
+              \{selectedFileContent \cf6 \strokec6 ?\cf4 \strokec4  (\
+                <>\
+                  <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 bg-slate-800 px-6 py-4 flex items-center gap-3 border-b border-slate-700\cf4 \strokec4 ">\
+                    <\cf7 \strokec7 Code\cf8 \strokec8  \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 w-5 h-5 text-blue-400\cf4 \strokec4 "\cf8 \strokec8  \cf4 \strokec4 />\
+                    <\cf8 \strokec8 span \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 text-slate-200 font-medium\cf4 \strokec4 ">\{selectedFile\}</\cf8 \strokec8 span\cf4 \strokec4 >\
+                  </\cf8 \strokec8 div\cf4 \strokec4 >\
+                  <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 overflow-x-auto\cf4 \strokec4 ">\
+                    <\cf8 \strokec8 pre \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 p-6 text-sm leading-relaxed\cf4 \strokec4 ">\
+                      <\cf8 \strokec8 code \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 text-green-300 whitespace-pre\cf4 \strokec4 ">\{selectedFileContent.code\}</\cf8 \strokec8 code\cf4 \strokec4 >\
+                    </\cf8 \strokec8 pre\cf4 \strokec4 >\
+                  </\cf8 \strokec8 div\cf4 \strokec4 >\
+                </>\
+              ) \cf6 \strokec6 :\cf4 \strokec4  (\
+                <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 p-16 text-center\cf4 \strokec4 ">\
+                  <\cf7 \strokec7 Code\cf8 \strokec8  \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 w-20 h-20 text-slate-600 mx-auto mb-4\cf4 \strokec4 "\cf8 \strokec8  \cf4 \strokec4 />\
+                  <\cf8 \strokec8 p \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 text-slate-400 text-lg\cf4 \strokec4 ">\
+                    Selecciona un archivo para ver su c\'f3digo\
+                  </\cf8 \strokec8 p\cf4 \strokec4 >\
+                </\cf8 \strokec8 div\cf4 \strokec4 >\
+              )\}\
+            </\cf8 \strokec8 div\cf4 \strokec4 >\
+          </\cf8 \strokec8 div\cf4 \strokec4 >\
+        </\cf8 \strokec8 div\cf4 \strokec4 >\
+\
+        \{
+\f1\i \cf9 \strokec9 /* Tips */
+\f0\i0 \cf4 \strokec4 \}\
+        <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 mt-6 grid grid-cols-1 md:grid-cols-2 gap-4\cf4 \strokec4 ">\
+          <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 bg-gradient-to-br from-blue-50 to-blue-100 border-l-4 border-blue-500 rounded-lg p-5\cf4 \strokec4 ">\
+            <\cf8 \strokec8 h3 \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 font-bold text-blue-900 mb-3\cf4 \strokec4 ">\uc0\u55357 \u56960  Pasos R\'e1pidos</\cf8 \strokec8 h3\cf4 \strokec4 >\
+            <\cf8 \strokec8 ol \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 text-sm text-blue-800 space-y-2\cf4 \strokec4 ">\
+              <\cf8 \strokec8 li\cf4 \strokec4 ><strong>1.</\cf8 \strokec8 strong\cf4 \strokec4 > Crea las 3 carpetas</\cf8 \strokec8 li\cf4 \strokec4 >\
+              <\cf8 \strokec8 li\cf4 \strokec4 ><strong>2.</\cf8 \strokec8 strong\cf4 \strokec4 > Copia cada c\'f3digo</\cf8 \strokec8 li\cf4 \strokec4 >\
+              <\cf8 \strokec8 li\cf4 \strokec4 ><strong>3.</\cf8 \strokec8 strong\cf4 \strokec4 > Cambia tu n\'famero en main.js</\cf8 \strokec8 li\cf4 \strokec4 >\
+              <\cf8 \strokec8 li\cf4 \strokec4 ><strong>4.</\cf8 \strokec8 strong\cf4 \strokec4 > Agrega fotos en /images</\cf8 \strokec8 li\cf4 \strokec4 >\
+              <\cf8 \strokec8 li\cf4 \strokec4 ><strong>5.</\cf8 \strokec8 strong\cf4 \strokec4 > Sube a hosting gratis</\cf8 \strokec8 li\cf4 \strokec4 >\
+            </\cf8 \strokec8 ol\cf4 \strokec4 >\
+          </\cf8 \strokec8 div\cf4 \strokec4 >\
+\
+          <\cf8 \strokec8 div \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 bg-gradient-to-br from-yellow-50 to-yellow-100 border-l-4 border-yellow-500 rounded-lg p-5\cf4 \strokec4 ">\
+            <\cf8 \strokec8 h3 \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 font-bold text-yellow-900 mb-3\cf4 \strokec4 ">\uc0\u55357 \u56481  Hosting Gratis</\cf8 \strokec8 h3\cf4 \strokec4 >\
+            <\cf8 \strokec8 ul \cf7 \strokec7 className\cf4 \strokec4 ="\cf5 \strokec5 text-sm text-yellow-800 space-y-2\cf4 \strokec4 ">\
+              <\cf8 \strokec8 li\cf4 \strokec4 >\'95 <\cf8 \strokec8 strong\cf4 \strokec4 >Netlify:</\cf8 \strokec8 strong\cf4 \strokec4 > S\'faper f\'e1cil</\cf8 \strokec8 li\cf4 \strokec4 >\
+              <\cf8 \strokec8 li\cf4 \strokec4 >\'95 <\cf8 \strokec8 strong\cf4 \strokec4 >Vercel:</\cf8 \strokec8 strong\cf4 \strokec4 > Muy r\'e1pido</\cf8 \strokec8 li\cf4 \strokec4 >\
+              <\cf8 \strokec8 li\cf4 \strokec4 >\'95 <\cf8 \strokec8 strong\cf4 \strokec4 >GitHub Pages:</\cf8 \strokec8 strong\cf4 \strokec4 > Cl\'e1sico</\cf8 \strokec8 li\cf4 \strokec4 >\
+            </\cf8 \strokec8 ul\cf4 \strokec4 >\
+          </\cf8 \strokec8 div\cf4 \strokec4 >\
+        </\cf8 \strokec8 div\cf4 \strokec4 >\
+      </\cf8 \strokec8 div\cf4 \strokec4 >\
+    </\cf8 \strokec8 div\cf4 \strokec4 >\
+  );\
+\}}
